@@ -1,7 +1,5 @@
 const listNumeros=[40,10,30,40];
 
-const media=0;
-let mediana=0;
 
 // Calculo de media Aritmetica
 function calcularMediaAritmetica(lista){
@@ -18,8 +16,6 @@ function calcularMediaAritmetica(lista){
 
 
 //Calculo de mediana
-
-
 
 function esPar(numero){
     if(numero%2===0){
@@ -47,3 +43,33 @@ function esMediana(lista){
             mediana = lista[mitadLista];
             return mediana;
 }}
+
+//Calculo moda
+
+function calcularModa(lista){
+    const listCount={};
+    
+    lista.map(
+        function(elemento){
+            if(listCount[elemento]){
+                 listCount[elemento]+=1;
+            }
+            else{
+                        listCount[elemento]=1;
+        }
+         }
+);
+
+//Object.entries recibe el objeto que queremos convertir en Array y nos hace un array
+const listArray = Object.entries(listCount).sort(
+    function (elemento1, elemento2){
+        return elemento1[1]-elemento2[1];
+    }
+)
+
+let moda = listArray[listArray.length-1];
+
+return moda[0];
+}
+
+
